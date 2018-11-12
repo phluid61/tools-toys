@@ -1,0 +1,5 @@
+RewriteEngine On
+RewriteBase /tools/iprange/
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?ranges=$1&format= [QSA]

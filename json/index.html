@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8">
+  <title>JSON</title>
+  <link rel="stylesheet" href="//s.library.qut.edu.au/css/minimal-blue-20180105.css">
+  <link rel="icon" href="//s.library.qut.edu.au/favicon-20170112.ico">
+  <style type="text/css">textarea{display:inline-block;width:100%;height:20em;transition:background-color 0.8s;background-color:#fff}textarea.flash{transition:background-color 0s;background-color:#ff9}</style>
+  <script type="text/javascript">//<![CDATA[
+
+function Thingy() {
+ var ugly;
+ var beautiful;
+ var init = function() {
+  if (!ugly) {
+   ugly = document.getElementById('ugly');
+  }
+  if (!beautiful) {
+   beautiful = document.getElementById('beautiful');
+  }
+ };
+ var conv = function(from,to,i) {
+   try {
+    var obj = JSON.parse(from.value);
+    to.value = JSON.stringify(obj, null, i);
+    to.classList.add('flash');
+    from.style.height = '20em';
+    to.style.height = to.scrollHeight+'px';
+    window.setTimeout(function(){to.classList.remove('flash');},100);
+   } catch (e) {
+    alert("Something went wrong: "+e);
+   }
+ };
+ return {
+  go: function() {
+   init();
+   conv(ugly, beautiful, 4);
+  },
+  og: function() {
+   init();
+   conv(beautiful, ugly, 0);
+  },
+ };
+}
+var thingy = new Thingy();
+
+  //]]></script>
+ </head>
+ <body>
+  <div id="masthead" role="navigation">
+   <div id="qut">
+    <a href="https://www.qut.edu.au/"><img src="//s.library.qut.edu.au/img/qut-20150421" srcset="//s.library.qut.edu.au/img/qut-s-20150806 32w, //s.library.qut.edu.au/img/qut-20150421 52w, //s.library.qut.edu.au/img/qut-2x-20150421 104w" sizes="52px" alt="QUT home"></a><img src="//s.library.qut.edu.au/img/white-bar-20150421" srcset="//s.library.qut.edu.au/img/white-bar-s-20150806 26w, //s.library.qut.edu.au/img/white-bar-20150421 42w, //s.library.qut.edu.au/img/white-bar-2x-20150421 84w" sizes="42px" alt=""><a href="/"><img src="//s.library.qut.edu.au/img/eisas-20180105" srcset="//s.library.qut.edu.au/img/eisas-s-20180105 62w, //s.library.qut.edu.au/img/eisas-20180105 100w, //s.library.qut.edu.au/img/eisas-2x-20180105 200w" sizes="100px" alt="QUT Library home page"></a>
+   </div>
+   <div id="strap">
+     <img src="//static.library.qut.edu.au/img/strapline-20130415" srcset="//static.library.qut.edu.au/img/strapline-20130415 187w, //static.library.qut.edu.au/img/strapline-2x-20141024 374w" sizes="187px" alt="A university for the real world">
+   </div>
+  </div>
+  <h1>JSON</h1>
+  <p>Ugly:</p>
+  <textarea id="ugly"></textarea>
+  <button onclick="javascript:thingy.go()">&darr; Make beautiful &darr;</button>
+  <button onclick="javascript:thingy.og()">&uarr; Make ugly &uarr;</button>
+  <p>Beautiful:</p>
+  <textarea id="beautiful"></textarea>
+ </body>
+</html>

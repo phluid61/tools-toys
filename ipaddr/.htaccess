@@ -1,0 +1,5 @@
+RewriteEngine On
+RewriteBase /tools/ipaddr/
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?addr=$1&rdns=1&whois=1 [QSA]
