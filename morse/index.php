@@ -108,11 +108,11 @@ header('content-type: text/html');
         <div><?php echo $result;?></div>
 <?php } ?>
 
-        <form method="GET" action="morse.php">
+        <form method="GET" action="./">
             <input type="text" name="ascii" value="<?php echo $ascii;?>">
             <input type="submit" value="to Morse code &rarr;">
         </form>
-        <form method="GET" action="morse.php">
+        <form method="GET" action="./">
             <input type="submit" value="&larr; to ASCII">
             <input type="text" name="morse" value="<?php echo $morse;?>">
         </form>
